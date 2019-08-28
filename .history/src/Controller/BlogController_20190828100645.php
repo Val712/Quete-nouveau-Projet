@@ -43,7 +43,7 @@ class BlogController extends AbstractController
  *
  * @param string $slug The slugger
  *
- * @Route("/show/{slug<^[a-z0-9-]+$>}",
+ * @Route("/{slug<^[a-z0-9-]+$>}",
  *     defaults={"slug" = null},
  *     name="blog_show")
  *  @return Response A response instance
@@ -78,38 +78,4 @@ public function show(?string $slug) : Response
      ]
    );
  }
-
- /**
- * Show by category from article's entity
- *
- * @Route("/", name="showCategory")
- * @return Response A response instance
- */
-public function showByCategory(string $categoryName): Response
-{
-     $articles = $this->getDoctrine()
-         ->getRepository(Article::class)
-         ->findOneBy('category');
-
-     if (!$articles) {
-         throw $this->createNotFoundException(
-         'No article found in article\'s table.'
-         );
-
-         $articles = $this->getDoctrine()
-         ->getRepository(Article::class)
-         ->findBy('category'=>'javascript');
-
-     if (!$articles) {
-         throw $this->createNotFoundException(
-         'No article found in article\'s table.'
-         );
-
-     }
-
-     return $this->render(
-             'blog/category.html.twig',
-             ['articles' => $articles]
-     );
-
 }

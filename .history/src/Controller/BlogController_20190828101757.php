@@ -78,38 +78,4 @@ public function show(?string $slug) : Response
      ]
    );
  }
-
- /**
- * Show by category from article's entity
- *
- * @Route("/", name="showCategory")
- * @return Response A response instance
- */
-public function showByCategory(string $categoryName): Response
-{
-     $articles = $this->getDoctrine()
-         ->getRepository(Article::class)
-         ->findOneBy('category');
-
-     if (!$articles) {
-         throw $this->createNotFoundException(
-         'No article found in article\'s table.'
-         );
-
-         $articles = $this->getDoctrine()
-         ->getRepository(Article::class)
-         ->findBy('category'=>'javascript');
-
-     if (!$articles) {
-         throw $this->createNotFoundException(
-         'No article found in article\'s table.'
-         );
-
-     }
-
-     return $this->render(
-             'blog/category.html.twig',
-             ['articles' => $articles]
-     );
-
 }

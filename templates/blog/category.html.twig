@@ -1,4 +1,4 @@
-# templates/blog/show.html.twig #}
+# templates/blog/category.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ slug }}{% endblock %}
@@ -8,8 +8,8 @@
 {% block body %}
 
 <div>
-    <h1>Real article s title : {{ article.title }}</h1>
-    <h2>Category : {{ article.category.name }}</h2>
+    <p>{{ article.id }}</p>
+    <p>{{ article.title }}</p>
     <p>{{ article.content }}</p>
 </div>
 
