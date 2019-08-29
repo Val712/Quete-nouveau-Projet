@@ -89,20 +89,20 @@ public function show(?string $slug) : Response
  public function showByCategory(string $categoryName) // 
  {
 
-    $category = $this->getDoctrine() // Appel de la class/table Catégory 
+    $category = $this->getDoctrine() 
         ->getRepository(Category::class)
-        ->findOneBy(['name' => mb_strtolower($categoryName)]); //met dans la variable $category le nom de la category appellé le slug
+        ->findOneBy(['name' => mb_strtolower($categoryName)]);
 
-    $articles = $this->getDoctrine() // appel de la class/table article
+    $articles = $this->getDoctrine()
         ->getRepository(Article::class)
-        ->findBy(['category' => $category], ['id' => 'DESC'], 3); //met dans $article le nom de la category récupéré au-dessus
-                                                                  // et la classe par ordre décroissant de l'ID et ne prend que les 3 premières
+        ->findBy(['category' => $category], ['id' => 'DESC'], 3);
+
     return $this->render(
         'blog/category.html.twig',
         [
             'category' => $category,
             'articles' => $articles,
-            
+            'slug' => $slug,
         ]
     );
  }

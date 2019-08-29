@@ -1,4 +1,4 @@
-{# templates/blog/category.html.twig #}
+{# templates/blog/show.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ category.name }}{% endblock %}
@@ -7,12 +7,10 @@
 
 {% block body %}
 
-<div> 
-{% for article in articles %}
-    <p>{{ article.id }}</p>
-    <p>{{ article.title }}</p>
+<div>
+    <h1>Real article s title : {{ article.title }}</h1>
+    <h2>Category : {{ article.category.name }}</h2>
     <p>{{ article.content }}</p>
-{% endfor %}
 </div>
 
 <a href="{{ path('app_index') }}">

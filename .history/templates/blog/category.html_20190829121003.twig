@@ -7,12 +7,10 @@
 
 {% block body %}
 
-<div> 
-{% for article in articles %}
+<div>
     <p>{{ article.id }}</p>
     <p>{{ article.title }}</p>
     <p>{{ article.content }}</p>
-{% endfor %}
 </div>
 
 <a href="{{ path('app_index') }}">

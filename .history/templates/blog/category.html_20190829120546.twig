@@ -1,18 +1,16 @@
 {# templates/blog/category.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}{{ slug }}{% endblock %}
 
 {% block stylesheets %}{% endblock %}
 
 {% block body %}
 
-<div> 
-{% for article in articles %}
+<div>
     <p>{{ article.id }}</p>
     <p>{{ article.title }}</p>
     <p>{{ article.content }}</p>
-{% endfor %}
 </div>
 
 <a href="{{ path('app_index') }}">
