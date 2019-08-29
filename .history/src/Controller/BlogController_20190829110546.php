@@ -62,7 +62,7 @@ public function show(?string $slug) : Response
 
     $article = $this->getDoctrine()
            ->getRepository(Article::class)
-           ->findOneBy(['Title' => mb_strtolower($slug)]); //trouve dans la class article un title correspondant au slug
+           ->findOneBy(['title' => mb_strtolower($slug)]); //trouve dans la class article un title correspondant au slug
 
     if (!$article) {   // création d'un message d'erreur lorsque $article ne contient rien : $slug ne correspond a aucun titre d'article
          throw $this->createNotFoundException(
@@ -70,7 +70,7 @@ public function show(?string $slug) : Response
      );
    }
 
-    return $this->render(  // affichage dans la vue la variable $slug et la variable $article
+    return $this->render(
     'blog/show.html.twig',
      [
              'article' => $article,

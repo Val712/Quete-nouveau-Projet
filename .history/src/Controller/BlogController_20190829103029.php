@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Entity\Category;
+use Proxies\__CG__\App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,19 +21,19 @@ class BlogController extends AbstractController
  * @Route("/index", name="index")
  * @return Response A response instance
  */
- public function index(): Response    //Déclaration de l'Array $article contenant tous l'objet article
+ public function index(): Response
  {
       $articles = $this->getDoctrine()
           ->getRepository(Article::class)
           ->findAll();
 
-      if (!$articles) {              // Création d'un message lorsque la variable $article ne contient rien
+      if (!$articles) {
           throw $this->createNotFoundException(
           'No article found in article\'s table.'
           );
       }
 
-      return $this->render(             // affichage dans la vue de l'array $article
+      return $this->render(
               'blog/index.html.twig',
               ['articles' => $articles]
       );
@@ -45,40 +45,39 @@ class BlogController extends AbstractController
  *
  * @Route("/show/{slug<^[a-z0-9-]+$>}",
  *     defaults={"slug" = null},
- *     name="show")
+ *     name="blog_show")
  *  @return Response A response instance
  */
 public function show(?string $slug) : Response
-{
-    if (!$slug) {     // création d'un message d'erreur lorsque $slug ne contient rien
+ {
+    if (!$slug) {
            throw $this
            ->createNotFoundException('No slug has been sent to find an article in article\'s table.');
        }
 
-    $slug = preg_replace(    //remplace les tirets par des espaces dans le slug
+    $slug = preg_replace(
      '/-/',
      ' ', ucwords(trim(strip_tags($slug)), "-")
        );
 
     $article = $this->getDoctrine()
            ->getRepository(Article::class)
-           ->findOneBy(['Title' => mb_strtolower($slug)]); //trouve dans la class article un title correspondant au slug
+           ->findOneBy(['title' => mb_strtolower($slug)]);
 
-    if (!$article) {   // création d'un message d'erreur lorsque $article ne contient rien : $slug ne correspond a aucun titre d'article
+    if (!$article) {
          throw $this->createNotFoundException(
          'No article with '.$slug.' title, found in article\'s table.'
      );
    }
 
-    return $this->render(  // affichage dans la vue la variable $slug et la variable $article
+    return $this->render(
     'blog/show.html.twig',
      [
              'article' => $article,
              'slug' => $slug,
      ]
    );
-}
-
+ }
 
  /**
  * Show by category from article's entity
@@ -86,8 +85,8 @@ public function show(?string $slug) : Response
  * @Route("/showByCategory/", name="showCategory")
  * @return Response A response instance
  */
- public function showByCategory(string $categoryName)
- {
+public function showByCategory(string $categoryName)
+{
 
     $category = $this->getDoctrine()
         ->getRepository(Category::class)
@@ -104,6 +103,6 @@ public function show(?string $slug) : Response
             'articles' => $articles,
         ]
     );
- }
+}
     
 }
