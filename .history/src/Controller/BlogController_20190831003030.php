@@ -83,15 +83,15 @@ public function show(?string $slug) : Response
  /**
  * Show by category from article's entity
  *
- * @Route("/showByCategory/{name}", name="showCategory")
+ * @Route("/showByCategory/{categoryName}", name="showCategory")
  * @return Response A response instance
  */
  public function showByCategory(category $category) // 
  {
 
     //$category = $this->getDoctrine() // Appel de la class/table Catégory 
-       // ->getRepository(Category::class)
-       // ->findOneBy(['name' => mb_strtolower($categoryName)]); //met dans la variable $category le nom de la category appellé le slug
+      //  ->getRepository(Category::class)
+        //->findOneBy(['name' => mb_strtolower($category)]); //met dans la variable $category le nom de la category appellé le slug
         
         $articles = $category->getArticles(); //retourne dans $category la liste de tous les article de la category taper dans l'url
     
