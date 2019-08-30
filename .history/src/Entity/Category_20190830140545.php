@@ -44,7 +44,7 @@ class Category
  /**
   * @return Collection|Article[]
   */
-  public function getArticles()
+  public function getArticles(): Collection
   {
       return $this->articles;
   }

@@ -44,10 +44,11 @@ class Category
  /**
   * @return Collection|Article[]
   */
-  public function getArticles()
+  public function getArticles(): 
   {
       return $this->articles;
   }
+
 
 
   /**

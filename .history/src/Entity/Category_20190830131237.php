@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository", mappedBy="category")
  */
 class Category
 {
@@ -44,10 +44,11 @@ class Category
  /**
   * @return Collection|Article[]
   */
-  public function getArticles()
+  public function getArticles(): 
   {
       return $this->articles;
   }
+
 
 
   /**

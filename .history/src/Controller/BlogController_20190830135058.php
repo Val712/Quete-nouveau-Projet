@@ -93,7 +93,7 @@ public function show(?string $slug) : Response
         ->getRepository(Category::class)
         ->findOneBy(['name' => mb_strtolower($categoryName)]); //met dans la variable $category le nom de la category appellé le slug
         
-        $articles = $category->getArticles(); //retourne dans $category la liste de tous les article de la category taper dans l'url
+        $articles = category->getArticles($categoryName); //retourne dans $category la liste de tous les article de la category taper dans l'url
     
     return $this->render(
         'blog/category.html.twig',
