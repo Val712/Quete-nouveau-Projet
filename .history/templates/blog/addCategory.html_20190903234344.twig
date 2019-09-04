@@ -1,0 +1,16 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}All articles{% endblock %}
+
+{% block body %}
+
+
+
+{{ form_start(addcat) }}
+    {{ form_row(addcat.name) }}
+    <button type="submit" name="btnSearch">Ajouter</button>
+{{ form_end(addcat) }}
+
+{% endblock %}

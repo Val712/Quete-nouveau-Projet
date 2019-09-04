@@ -64,7 +64,7 @@ class BlogController extends AbstractController
           ['method'=> Request::METHOD_POST]
            );
 
-           $form2->handleRequest($request);
+           $form->handleRequest($request);
            if ($form->isSubmitted()) {
 
            }

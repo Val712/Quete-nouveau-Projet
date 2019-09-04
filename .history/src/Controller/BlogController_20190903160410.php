@@ -64,10 +64,8 @@ class BlogController extends AbstractController
           ['method'=> Request::METHOD_POST]
            );
 
-           $form2->handleRequest($request);
-           if ($form->isSubmitted()) {
+           $data = $form->getData();
 
-           }
 
       return $this->render(             // affichage dans la vue de l'array $article
               'blog/index.html.twig',

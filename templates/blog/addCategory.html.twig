@@ -1,0 +1,16 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une Catégorie{% endblock %}
+
+{% block body %}
+
+
+
+{{ form_start(addcat) }}
+    {{ form_row(addcat.name) }}
+    <button type="submit" name="btnSearch">Ajouter votre catégorie</button>
+{{ form_end(addcat) }}
+
+{% endblock %}

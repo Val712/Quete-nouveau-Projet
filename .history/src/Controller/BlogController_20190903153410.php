@@ -26,7 +26,7 @@ class BlogController extends AbstractController
  * @Route("/index", name="index")
  * @return Response A response instance
  */
- public function index(Request $request): Response    //Déclaration de l'Array $article contenant tous l'objet article
+ public function index(): Response    //Déclaration de l'Array $article contenant tous l'objet article
  {
       $articles = $this->getDoctrine()
           ->getRepository(Article::class)
@@ -42,32 +42,16 @@ class BlogController extends AbstractController
         ArticleSearchType::class,
         null,
         ['method' => Request::METHOD_GET]
-      )
-      ;
 
-
-        $form->handleRequest($request);
-      
-   if ($form->isSubmitted()) {
-      $data = $form->getData();
-      // $data contient les données du $_POST
-      // Faire une recherche dans la BDD avec les infos de $data...
-      }
-
-
-        
+        );
 
         $category = new Category();
         $form2 = $this->createForm(
           CategoryType::class, 
           $category,
           ['method'=> Request::METHOD_POST]
-           );
+        );
 
-           $form2->handleRequest($request);
-           if ($form->isSubmitted()) {
-
-           }
 
       return $this->render(             // affichage dans la vue de l'array $article
               'blog/index.html.twig',

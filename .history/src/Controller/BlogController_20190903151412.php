@@ -4,14 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Category;
-use App\Form\ArticleSearchType;
-use App\Form\CategoryType;
-Use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
+use Symfony\Component\HttpFoundation\Request;
 
 
  /**
@@ -42,32 +38,16 @@ class BlogController extends AbstractController
         ArticleSearchType::class,
         null,
         ['method' => Request::METHOD_GET]
-      )
-      ;
 
-
-        $form->handleRequest($request);
-      
-   if ($form->isSubmitted()) {
-      $data = $form->getData();
-      // $data contient les données du $_POST
-      // Faire une recherche dans la BDD avec les infos de $data...
-      }
-
-
-        
+        );
 
         $category = new Category();
         $form2 = $this->createForm(
           CategoryType::class, 
           $category,
           ['method'=> Request::METHOD_POST]
-           );
+        );
 
-           $form2->handleRequest($request);
-           if ($form->isSubmitted()) {
-
-           }
 
       return $this->render(             // affichage dans la vue de l'array $article
               'blog/index.html.twig',
