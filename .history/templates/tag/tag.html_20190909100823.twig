@@ -1,7 +1,6 @@
-{# templates/blog/category.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}{{ tag.name }}{% endblock %}
 
 {% block stylesheets %}{% endblock %}
 
@@ -13,9 +12,6 @@
     <p>{{ article.title }}</p>
     <p>{{ article.content }}</p>
 
-
-
-
   
 {% endfor %}
 </div>
@@ -25,3 +21,4 @@
 </a>
 
 {% endblock %}
+

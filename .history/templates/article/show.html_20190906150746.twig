@@ -23,6 +23,7 @@
     </table>
 
     {% for tag in article.tags %}
+        {{dump(tag)}}
         <p> {{ tag.name }}  </p>
     {% endfor %}
 

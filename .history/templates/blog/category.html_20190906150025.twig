@@ -14,7 +14,9 @@
     <p>{{ article.content }}</p>
 
 
-
+    {% for tag in article.tag %}
+    <p> {{ tags.name }}  
+    {% endfor %}
 
   
 {% endfor %}
@@ -24,4 +26,4 @@
     Back to homepage.
 </a>
 
-{% endblock %}
+{% endblock %

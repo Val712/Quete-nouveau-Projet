@@ -22,8 +22,9 @@
         </tbody>
     </table>
 
-    {% for tag in article.tags %}
-        <p> {{ tag.name }}  </p>
+            {% for tag in article.tag %}
+    {{dump(tag)}}
+    <p> {{ tag.name }}  </p>
     {% endfor %}
 
     <a href="{{ path('article_index') }}">back to list</a>

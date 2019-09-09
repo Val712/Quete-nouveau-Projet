@@ -22,7 +22,8 @@
         </tbody>
     </table>
 
-    {% for tag in article.tags %}
+    {% for tag in article.tag %}
+        {{dump(tag)}}
         <p> {{ tag.name }}  </p>
     {% endfor %}
 

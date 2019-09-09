@@ -10,9 +10,12 @@
 <div>
     <h1>Real article s title : {{ article.title }}</h1>
     <h2>Category : {{ article.category.name }}</h2>
-    <p>{{ article.content }}</p>    ²
+    <p>{{ article.content }}</p>
 
-
+        {% for tag in article.tag %}
+    {{dump(tag)}}
+    <p> {{ tag.name }}  </p>
+    {% endfor %}
 </div>
 
 <a href="{{ path('app_index') }}">

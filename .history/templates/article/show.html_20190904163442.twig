@@ -22,10 +22,6 @@
         </tbody>
     </table>
 
-    {% for tag in article.tags %}
-        <p> {{ tag.name }}  </p>
-    {% endfor %}
-
     <a href="{{ path('article_index') }}">back to list</a>
 
     <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>

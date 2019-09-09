@@ -12,11 +12,16 @@
     <p>{{ article.id }}</p>
     <p>{{ article.title }}</p>
     <p>{{ article.content }}</p>
+    <p>{{ article.<ul>
+        {% for tag in craft.tags.group("tagGroupHandle").all() %}
+            <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
+    }}</p>
+        {% endfor %}
+    </ul>
+     }}</p>
 
-
-
-
-  
 {% endfor %}
 </div>
 
